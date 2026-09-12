@@ -1,0 +1,28 @@
+[build-system]
+requires = ['setuptools>=77']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'rawmath'
+version = '0.1.0'
+description = 'A from-scratch mathematics library for Python.'
+readme = 'README.md'
+requires-python = '>=3.10'
+license = 'MIT'
+
+authors = [
+    { name = 'PeagazinhoAI' }
+]
+
+dependencies = []
+
+classifiers = [
+    'Development Status :: 2 - Pre-Alpha',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Science/Research',
+    'Programming Language :: Python :: 3',
+    'Topic :: Scientific/Engineering :: Mathematics',
+]
+
+[tool.setuptools.packages.find]
+where = ['src']

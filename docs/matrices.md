@@ -396,8 +396,8 @@ A = Matrix([
     [3, 4],
 ])
 
-A * 2
-2 * A
+A*2
+2*A
 ```
 
 Both produce:

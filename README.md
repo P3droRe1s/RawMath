@@ -151,8 +151,8 @@ print(A + B)
 print(A - B)
 print(-A)
 
-print(A * 2)
-print(2 * A)
+print(A*2)
+print(2*A)
 print(A / 2)
 
 print(abs(A))

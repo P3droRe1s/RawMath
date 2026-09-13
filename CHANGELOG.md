@@ -6,7 +6,6 @@ All notable changes to RawMath will be documented in this file.
 
 ### Added
 
-- Added support for matrices defined through a formation rule.
 - Added scalar multiplication with `A * n` and `n * A`.
 - Added scalar division with `A / n`.
 - Added the maximum-entry matrix norm with `abs(A)`.

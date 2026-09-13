@@ -6,7 +6,7 @@ All notable changes to RawMath will be documented in this file.
 
 ### Added
 
-- Added scalar multiplication with `A * n` and `n * A`.
+- Added scalar multiplication with `A*n` and `n*A`.
 - Added scalar division with `A / n`.
 - Added the maximum-entry matrix norm with `abs(A)`.
 - Added support for calculating matrix distance naturally with `abs(A - B)`.

@@ -1,3 +1,3 @@
-from typing import Any
+from ..types.number import Number
 
-type MatrixData = list[list[Any, Any]]
+type MatrixData = list[list[Number]]

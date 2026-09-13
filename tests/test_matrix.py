@@ -763,3 +763,213 @@ def test_small_matrix_is_not_summarized() -> None:
     ])
 
     assert '...' not in str(matrix)
+
+
+def test_setitem_reject_non_numeric_value() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(TypeError):
+        matrix[0, 0] = 'hello'
+
+
+def test_reject_non_integer_row_dimension() -> None:
+    with pytest.raises(TypeError):
+        Matrix((2.5, 3))
+
+
+def test_reject_non_integer_column_dimension() -> None:
+    with pytest.raises(TypeError):
+        Matrix((2, 3.5))
+
+
+def test_reject_zero_row_dimension() -> None:
+    with pytest.raises(ValueError):
+        Matrix((0, 3))
+
+
+def test_reject_zero_column_dimension() -> None:
+    with pytest.raises(ValueError):
+        Matrix((3, 0))
+
+
+def test_reject_negative_row_dimension() -> None:
+    with pytest.raises(ValueError):
+        Matrix((-1, 3))
+
+
+def test_reject_negative_column_dimension() -> None:
+    with pytest.raises(ValueError):
+        Matrix((3, -1))
+
+
+def test_matrix_equality_with_non_matrix() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    assert not (matrix == 10)
+
+
+def test_matrix_inequality_with_non_matrix() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    assert matrix != 10
+
+
+def test_matrix_absolute_value() -> None:
+    matrix = Matrix([
+        [-2, 5],
+        [-8, 3],
+    ])
+
+    assert abs(matrix) == 8
+
+
+def test_matrix_absolute_value_with_floats() -> None:
+    matrix = Matrix([
+        [-1.5, 2.75],
+        [0.5, -2.5],
+    ])
+
+    assert abs(matrix) == 2.75
+
+
+def test_scalar_multiplication() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    assert matrix * 3 == Matrix([
+        [3, 6],
+        [9, 12],
+    ])
+
+
+def test_reverse_scalar_multiplication() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    assert 3 * matrix == Matrix([
+        [3, 6],
+        [9, 12],
+    ])
+
+
+def test_scalar_multiplication_with_float() -> None:
+    matrix = Matrix([
+        [2, 4],
+        [6, 8],
+    ])
+
+    assert matrix * 0.5 == Matrix([
+        [1.0, 2.0],
+        [3.0, 4.0],
+    ])
+
+
+def test_scalar_division() -> None:
+    matrix = Matrix([
+        [2, 4],
+        [6, 8],
+    ])
+
+    assert matrix / 2 == Matrix([
+        [1.0, 2.0],
+        [3.0, 4.0],
+    ])
+
+
+def test_scalar_division_by_zero() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(ZeroDivisionError):
+        matrix / 0
+
+
+def test_reject_non_numeric_scalar_multiplication() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(TypeError):
+        matrix * 'hello'
+
+
+def test_reject_non_numeric_scalar_division() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(TypeError):
+        matrix / 'hello'
+
+
+def test_reject_scalar_divided_by_matrix() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(TypeError):
+        2 / matrix
+
+
+def test_addition_rejects_non_matrix_operand() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(TypeError):
+        matrix + 10
+
+
+def test_subtraction_rejects_non_matrix_operand() -> None:
+    matrix = Matrix([
+        [1, 2],
+        [3, 4],
+    ])
+
+    with pytest.raises(TypeError):
+        matrix - 10
+
+
+def test_matrix_copies_input_data() -> None:
+    data = [
+        [1, 2],
+        [3, 4],
+    ]
+
+    matrix = Matrix(data)
+
+    data[0][0] = 100
+
+    assert matrix[0][0] == 1
+
+
+def test_matrix_changes_do_not_modify_input_data() -> None:
+    data = [
+        [1, 2],
+        [3, 4],
+    ]
+
+    matrix = Matrix(data)
+
+    matrix[0, 0] = 100
+
+    assert data[0][0] == 1

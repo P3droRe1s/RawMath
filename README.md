@@ -27,7 +27,7 @@ python -m pip install -e .
 
 ## Requirements
 
-- Python 3.10+
+- Python 3.12+
 
 ## Quick Start
 
@@ -45,13 +45,14 @@ B = Matrix([
 ])
 
 print(A + B)
-```
+print(A - B)
 
-Output:
+print(2 * A)
+print(A * 2)
+print(A / 2)
 
-```text
-Matrix([  6   8 ]
-       [ 10  12 ])
+print(abs(A))
+print(abs(A - B))
 ```
 
 ## Matrix
@@ -125,8 +126,15 @@ True
 
 ### Matrix operations
 
-RawMath currently supports matrix equality, opposite matrices, addition and
-subtraction.
+RawMath currently supports:
+
+- matrix equality and inequality;
+- opposite matrices;
+- matrix addition and subtraction;
+- scalar multiplication;
+- scalar division;
+- maximum-entry norm with `abs(A)`;
+- matrix distance with `abs(A - B)`.
 
 ```python
 A = Matrix([
@@ -142,6 +150,13 @@ B = Matrix([
 print(A + B)
 print(A - B)
 print(-A)
+
+print(A * 2)
+print(2 * A)
+print(A / 2)
+
+print(abs(A))
+print(abs(A - B))
 ```
 
 ## Documentation
@@ -188,7 +203,7 @@ mathematical concepts. Features and public APIs may change between versions.
 Current release:
 
 ```text
-0.1.0
+0.2.0
 ```
 
 ## Links
